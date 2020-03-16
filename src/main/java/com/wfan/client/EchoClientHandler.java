@@ -22,13 +22,14 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         ctx.writeAndFlush(Unpooled.copiedBuffer("Netty rocks!", CharsetUtil.UTF_8));
+//        ctx.writeAndFlush("Netty rocks!");
     }
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg)
-        throws Exception {
+            throws Exception {
         System.out
-            .println("Client received: " + ByteBufUtil.hexDump(msg.readBytes(msg.readableBytes())));
+                .println("Client received: " + ByteBufUtil.hexDump(msg.readBytes(msg.readableBytes())));
     }
 
     @Override
